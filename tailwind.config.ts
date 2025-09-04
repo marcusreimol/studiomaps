@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['PT Sans', 'sans-serif'],
-        headline: ['PT Sans', 'sans-serif'],
+        body: ['Cutive Mono', 'monospace'],
+        headline: ['Cutive Mono', 'monospace'],
         code: ['monospace'],
       },
       colors: {
