@@ -1,3 +1,9 @@
+import { HeatmapContainer } from "@/components/heatmap-container";
+
 export default function Home() {
-  return <></>;
+  return (
+    <main>
+      <HeatmapContainer />
+    </main>
+  );
 }
