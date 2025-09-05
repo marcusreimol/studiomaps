@@ -7,11 +7,11 @@ import { ControlsPanel } from "./controls-panel";
 import { optimizeHeatmapRadius } from "@/ai/flows/optimize-heatmap-radius-with-ai";
 import { useToast } from "@/hooks/use-toast";
 
-const RIO_CENTER = { lat: -22.9068, lng: -43.1729 };
+const RIO_METROPOLITAN_CENTER = { lat: -22.88, lng: -43.0 };
 
 const mapOptions = {
-  center: RIO_CENTER,
-  zoom: 11,
+  center: RIO_METROPOLITAN_CENTER,
+  zoom: 10,
   minZoom: 9,
   maxZoom: 16,
   mapId: "1f2b96b65a4dc164",
