@@ -7,8 +7,6 @@ import { ControlsPanel } from "./controls-panel";
 import { optimizeHeatmapRadius } from "@/ai/flows/optimize-heatmap-radius-with-ai";
 import { useToast } from "@/hooks/use-toast";
 
-const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-
 const RIO_CENTER = { lat: -22.9068, lng: -43.1729 };
 
 const mapOptions = {
@@ -22,9 +20,12 @@ const mapOptions = {
   scrollwheel: true,
 };
 
+type HeatmapContainerProps = {
+  apiKey?: string;
+};
 
-export function HeatmapContainer() {
-  if (!GOOGLE_MAPS_API_KEY) {
+export function HeatmapContainer({ apiKey }: HeatmapContainerProps) {
+  if (!apiKey) {
     return (
       <div className="w-screen h-screen bg-background flex items-center justify-center text-center p-8">
         <div className="space-y-4 max-w-lg">
@@ -56,7 +57,7 @@ export function HeatmapContainer() {
   }
 
   return (
-    <APIProvider apiKey={GOOGLE_MAPS_API_KEY} libraries={["visualization"]}>
+    <APIProvider apiKey={apiKey} libraries={["visualization"]}>
       <MapComponent />
     </APIProvider>
   );
