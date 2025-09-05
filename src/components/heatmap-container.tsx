@@ -7,7 +7,7 @@ import { ControlsPanel } from "./controls-panel";
 import { optimizeHeatmapRadius } from "@/ai/flows/optimize-heatmap-radius-with-ai";
 import { useToast } from "@/hooks/use-toast";
 
-const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "YOUR_GOOGLE_MAPS_API_KEY_HERE";
+const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
 const RIO_CENTER = { lat: -22.9068, lng: -43.1729 };
 
@@ -24,7 +24,7 @@ const mapOptions = {
 
 
 export function HeatmapContainer() {
-  if (!GOOGLE_MAPS_API_KEY || GOOGLE_MAPS_API_KEY === "YOUR_GOOGLE_MAPS_API_KEY_HERE") {
+  if (!GOOGLE_MAPS_API_KEY) {
     return (
       <div className="w-screen h-screen bg-background flex items-center justify-center text-center p-8">
         <div className="space-y-4 max-w-lg">
@@ -46,6 +46,9 @@ export function HeatmapContainer() {
             <pre className="bg-muted p-4 rounded-md text-left font-code text-sm">
               {`NEXT_PUBLIC_GOOGLE_MAPS_API_KEY="YOUR_API_KEY"`}
             </pre>
+            <p className="mt-4">
+              After adding the key, you may need to restart the application for the changes to take effect.
+            </p>
           </div>
         </div>
       </div>
