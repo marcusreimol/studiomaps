@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { APIProvider, Map, useMap } from "@vis.gl/react-google-maps";
-import { getRioHeatmapData, type HeatmapPoint } from "@/lib/data";
+import { getRioHeatmapData, type HeatmapPoint, SUGGESTED_LOCATIONS, type SuggestedLocation } from "@/lib/data";
 import { ControlsPanel } from "./controls-panel";
 import { optimizeHeatmapRadius } from "@/ai/flows/optimize-heatmap-radius-with-ai";
 import { useToast } from "@/hooks/use-toast";
@@ -68,13 +68,12 @@ function MapComponent() {
     }
   }, [zoom, data.length, radius, toast]);
   
-  const handlePlaceSelect = useCallback(
-    (place: google.maps.places.PlaceResult | null) => {
-      if (!map || !place?.geometry?.location) return;
-
-      map.panTo(place.geometry.location);
-      map.setZoom(15);
-      setZoom(15);
+  const handleLocationSelect = useCallback(
+    (location: SuggestedLocation) => {
+      if (!map) return;
+      map.panTo(location.position);
+      map.setZoom(location.zoom);
+      setZoom(location.zoom);
     },
     [map]
   );
@@ -90,7 +89,7 @@ function MapComponent() {
         onOptimize={handleOptimizeRadius}
         isLoading={isLoading}
         aiReasoning={aiReasoning}
-        onPlaceSelect={handlePlaceSelect}
+        onLocationSelect={handleLocationSelect}
       />
     </div>
   );

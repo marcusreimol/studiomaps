@@ -4,6 +4,12 @@ export type HeatmapPoint = {
   weight: number;
 };
 
+export type SuggestedLocation = {
+  name: string;
+  position: { lat: number; lng: number };
+  zoom: number;
+};
+
 // Define centers for the cities
 const LOCATIONS = [
   { center: { lat: -22.9068, lng: -43.1729 }, count: 120, spread: 0.1 },   // Rio de Janeiro (South Zone / Center)
@@ -11,6 +17,13 @@ const LOCATIONS = [
   { center: { lat: -22.8969, lng: -43.1041 }, count: 60, spread: 0.04 },  // Niterói
   { center: { lat: -22.8239, lng: -43.0536 }, count: 50, spread: 0.05 },  // São Gonçalo
   { center: { lat: -22.9194, lng: -42.8211 }, count: 40, spread: 0.06 },  // Maricá
+];
+
+export const SUGGESTED_LOCATIONS: SuggestedLocation[] = [
+  { name: 'Rio de Janeiro (Centro)', position: { lat: -22.9068, lng: -43.1729 }, zoom: 13 },
+  { name: 'Niterói', position: { lat: -22.8969, lng: -43.1041 }, zoom: 13 },
+  { name: 'São Gonçalo', position: { lat: -22.8239, lng: -43.0536 }, zoom: 13 },
+  { name: 'Maricá', position: { lat: -22.9194, lng: -42.8211 }, zoom: 13 },
 ];
 
 /**
