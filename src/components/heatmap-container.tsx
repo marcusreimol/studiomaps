@@ -6,14 +6,15 @@ import { getRioHeatmapData, type HeatmapPoint } from "@/lib/data";
 import { ControlsPanel } from "./controls-panel";
 import { optimizeHeatmapRadius } from "@/ai/flows/optimize-heatmap-radius-with-ai";
 import { useToast } from "@/hooks/use-toast";
+import { SearchBox } from "./search-box";
 
-const RIO_METROPOLITAN_CENTER = { lat: -22.88, lng: -43.0 };
+const RIO_METROPOLITAN_CENTER = { lat: -22.8, lng: -43.0 };
 
 const mapOptions = {
   center: RIO_METROPOLITAN_CENTER,
-  zoom: 10,
+  zoom: 9,
   minZoom: 9,
-  maxZoom: 16,
+  maxZoom: 18,
   mapId: "1f2b96b65a4dc164",
   disableDefaultUI: true,
   zoomControl: true,
@@ -57,7 +58,7 @@ export function HeatmapContainer({ apiKey }: HeatmapContainerProps) {
   }
 
   return (
-    <APIProvider apiKey={apiKey} libraries={["visualization"]}>
+    <APIProvider apiKey={apiKey} libraries={["visualization", "places"]}>
       <MapComponent />
     </APIProvider>
   );
@@ -70,6 +71,7 @@ function MapComponent() {
   const [isLoading, setIsLoading] = useState(false);
   const [aiReasoning, setAiReasoning] = useState<string | null>(null);
   const { toast } = useToast();
+  const map = useMap();
 
   const handleOptimizeRadius = useCallback(async () => {
     setIsLoading(true);
@@ -98,6 +100,17 @@ function MapComponent() {
     }
   }, [zoom, data.length, radius, toast]);
   
+  const handlePlaceSelect = useCallback(
+    (place: google.maps.places.PlaceResult | null) => {
+      if (!map || !place?.geometry?.location) return;
+
+      map.panTo(place.geometry.location);
+      map.setZoom(15);
+      setZoom(15);
+    },
+    [map]
+  );
+
   return (
     <div className="h-screen w-screen relative bg-background">
       <Map {...mapOptions} onZoomChanged={(e) => setZoom(e.detail.zoom)}>
@@ -110,6 +123,7 @@ function MapComponent() {
         isLoading={isLoading}
         aiReasoning={aiReasoning}
       />
+      <SearchBox onPlaceSelect={handlePlaceSelect} />
     </div>
   );
 }
