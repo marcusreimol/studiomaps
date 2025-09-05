@@ -122,8 +122,8 @@ function MapComponent() {
         onOptimize={handleOptimizeRadius}
         isLoading={isLoading}
         aiReasoning={aiReasoning}
+        onPlaceSelect={handlePlaceSelect}
       />
-      <SearchBox onPlaceSelect={handlePlaceSelect} />
     </div>
   );
 }

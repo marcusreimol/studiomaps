@@ -7,6 +7,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Sparkles, Info, LoaderCircle, Flame } from "lucide-react";
+import { SearchBox } from "./search-box";
 
 type ControlsPanelProps = {
   radius: number;
@@ -14,6 +15,7 @@ type ControlsPanelProps = {
   onOptimize: () => void;
   isLoading: boolean;
   aiReasoning: string | null;
+  onPlaceSelect: (place: google.maps.places.PlaceResult | null) => void;
 };
 
 export const ControlsPanel: FC<ControlsPanelProps> = ({
@@ -22,9 +24,10 @@ export const ControlsPanel: FC<ControlsPanelProps> = ({
   onOptimize,
   isLoading,
   aiReasoning,
+  onPlaceSelect,
 }) => {
   return (
-    <Card className="absolute top-4 left-4 z-10 w-80 shadow-2xl bg-card/90 backdrop-blur-sm border-primary/20">
+    <Card className="absolute top-4 left-4 z-10 w-96 shadow-2xl bg-card/90 backdrop-blur-sm border-primary/20">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Flame className="h-6 w-6 text-primary" />
@@ -33,6 +36,7 @@ export const ControlsPanel: FC<ControlsPanelProps> = ({
         <CardDescription>AI-powered heatmap for Rio de Janeiro</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
+        <SearchBox onPlaceSelect={onPlaceSelect} />
         <div className="space-y-2">
           <Label htmlFor="radius-slider">Radius: {radius.toFixed(0)}px</Label>
           <Slider

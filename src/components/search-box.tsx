@@ -35,15 +35,13 @@ export function SearchBox({ onPlaceSelect }: SearchBoxProps) {
   }, [map, onPlaceSelect]);
 
   return (
-    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 w-96 max-w-[90%]">
-        <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input
-                ref={inputRef}
-                placeholder="Search for a location"
-                className="pl-10 shadow-lg"
-            />
-        </div>
+    <div className="relative">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+        <Input
+            ref={inputRef}
+            placeholder="Search for a location"
+            className="pl-10 shadow-lg"
+        />
     </div>
   );
 }
