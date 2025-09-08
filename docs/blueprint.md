@@ -2,9 +2,6 @@
 
 ## Core Features:
 
-- Data Fetching: Fetch heatmap data points (latitudes and longitudes) from an API. The API will return geographical coordinates of Rio de Janeiro
-- Heatmap Generation: Generate a heatmap overlay on a map using the fetched data. This visualization will show density of points.
-- Map Display: Display an interactive map centered on the state of Rio de Janeiro, Brazil, with the heatmap overlay.
 - Adjustable Radius - Tool: AI tool adjusts heatmap point radius by determining optimal viewing. Adjust radius to improve point grouping. Generative AI adjusts these to get the proper result.
 
 ## Style Guidelines:

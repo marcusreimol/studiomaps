@@ -1,0 +1,34 @@
+type User @table {
+  displayName: String!
+  createdAt: Timestamp!
+  email: String
+  photoUrl: String
+}
+
+type Habit @table {
+  user: User!
+  name: String!
+  frequency: String!
+  createdAt: Timestamp!
+  description: String
+  targetValue: Int
+  unit: String
+}
+
+type LogEntry @table {
+  user: User!
+  habit: Habit!
+  logDate: Date!
+  createdAt: Timestamp!
+  value: Float
+  note: String
+}
+
+type Reminder @table {
+  user: User!
+  habit: Habit!
+  reminderTime: String!
+  dayOfWeek: String!
+  enabled: Boolean!
+  message: String
+}

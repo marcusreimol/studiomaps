@@ -1,0 +1,76 @@
+mutation SeedDatabase @auth(level: USER) {
+  user_upsertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "bobuser",
+      email: "bob@example.com",
+      createdAt: "2024-01-01T00:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "aliceuser",
+      email: "alice@example.com",
+      createdAt: "2024-01-02T00:00:00Z"
+    }
+  ])
+  habit_upsertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      name: "Drink Water",
+      description: "Drink 8 glasses of water per day",
+      frequency: "daily",
+      targetValue: 8,
+      unit: "glasses",
+      createdAt: "2024-01-03T00:00:00Z"
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      name: "Exercise",
+      description: "Exercise for 30 minutes per day",
+      frequency: "daily",
+      targetValue: 30,
+      unit: "minutes",
+      createdAt: "2024-01-04T00:00:00Z"
+    }
+  ])
+  logEntry_upsertMany(data: [
+    {
+      id: "750e8400-e29b-41d4-a716-446655440000",
+      habitId: "650e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      logDate: "2024-01-05",
+      value: 8,
+      createdAt: "2024-01-05T00:00:00Z"
+    },
+    {
+      id: "750e8400-e29b-41d4-a716-446655440001",
+      habitId: "650e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      logDate: "2024-01-06",
+      value: 30,
+      createdAt: "2024-01-06T00:00:00Z"
+    }
+  ])
+  reminder_upsertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440000",
+      habitId: "650e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      dayOfWeek: "Monday",
+      enabled: true,
+      message: "Remember to drink water!",
+      reminderTime: "08:00",
+    },
+    {
+      id: "850e8400-e29b-41d4-a716-446655440001",
+      habitId: "650e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      dayOfWeek: "Tuesday",
+      enabled: true,
+      message: "Remember to exercise!",
+      reminderTime: "17:00",
+    }
+  ])
+}

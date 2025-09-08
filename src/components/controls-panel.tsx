@@ -7,7 +7,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Sparkles, Info, LoaderCircle, Flame } from "lucide-react";
-import { LocationSelector } from "./search-box";
+import { LocationSelector } from "./location-selector";
 import type { SuggestedLocation } from "@/lib/data";
 
 type ControlsPanelProps = {

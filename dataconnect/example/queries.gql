@@ -1,0 +1,35 @@
+mutation CreateHabit @auth(level: USER) {
+  habit_insert(data: {
+    name: "New Habit",
+    description: "Description of new habit",
+    frequency: "Daily",
+    targetValue: 1,
+    unit: "Times",
+    userId_expr: "auth.uid"
+  })
+}
+
+query GetMyHabits @auth(level: USER) {
+  habits(where: {userId: {eq_expr: "auth.uid"}}) {
+    id
+    name
+    description
+    frequency
+    targetValue
+    unit
+  }
+}
+
+mutation UpdateHabit($id: UUID!, $name: String, $description: String) @auth(level: USER) {
+  habit_update(
+    id: $id,
+    data: {
+      name: $name,
+      description: $description
+    }
+  )
+}
+
+mutation DeleteHabit($id: UUID!) @auth(level: USER) {
+  habit_delete(id: $id)
+}
