@@ -2,17 +2,17 @@
 
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { APIProvider, Map, useMap } from "@vis.gl/react-google-maps";
-import { getRioHeatmapData, type HeatmapPoint, SUGGESTED_LOCATIONS, type SuggestedLocation } from "@/lib/data";
+import { getHeatmapData, type HeatmapPoint, type SuggestedLocation } from "@/lib/data";
 import { ControlsPanel } from "./controls-panel";
 import { optimizeHeatmapRadius } from "@/ai/flows/optimize-heatmap-radius-with-ai";
 import { useToast } from "@/hooks/use-toast";
 
-const RIO_METROPOLITAN_CENTER = { lat: -22.8, lng: -43.0 };
+const BRAZIL_CENTER = { lat: -14.235, lng: -51.9253 };
 
 const mapOptions = {
-  center: RIO_METROPOLITAN_CENTER,
-  zoom: 10,
-  minZoom: 9,
+  center: BRAZIL_CENTER,
+  zoom: 4,
+  minZoom: 4,
   maxZoom: 18,
   mapId: "1f2b96b65a4dc164",
   disableDefaultUI: true,
@@ -33,7 +33,7 @@ export function HeatmapContainer({ apiKey }: HeatmapContainerProps) {
 }
 
 function MapComponent() {
-  const [data] = useState<HeatmapPoint[]>(() => getRioHeatmapData());
+  const [data] = useState<HeatmapPoint[]>(() => getHeatmapData());
   const [radius, setRadius] = useState(20);
   const [zoom, setZoom] = useState(mapOptions.zoom);
   const [isLoading, setIsLoading] = useState(false);

@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Sparkles, Info, LoaderCircle, Flame } from "lucide-react";
+import { Sparkles, Info, LoaderCircle, ShieldAlert } from "lucide-react";
 import { LocationSelector } from "./location-selector";
 import type { SuggestedLocation } from "@/lib/data";
 
@@ -31,10 +31,10 @@ export const ControlsPanel: FC<ControlsPanelProps> = ({
     <Card className="absolute top-4 left-4 z-10 w-96 shadow-2xl bg-card/90 backdrop-blur-sm border-primary/20">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Flame className="h-6 w-6 text-primary" />
-          Templarium Heatmap
+          <ShieldAlert className="h-6 w-6 text-primary" />
+          Cyber Attack Heatmap
         </CardTitle>
-        <CardDescription>AI-powered heatmap for Rio de Janeiro</CardDescription>
+        <CardDescription>Registros de ciber ataques no Brasil</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <LocationSelector onLocationSelect={onLocationSelect} />

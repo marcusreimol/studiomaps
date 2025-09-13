@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Templarium Heatmap',
-  description: 'An interactive heatmap of Rio de Janeiro, powered by AI.',
+  title: 'Registros de Ciber Ataques no Brasil',
+  description: 'Mapa de calor interativo de registros de ciber ataques no Brasil.',
 };
 
 export default function RootLayout({
