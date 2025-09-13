@@ -30,11 +30,10 @@ export const ControlsPanel: FC<ControlsPanelProps> = ({
   return (
     <Card className="absolute top-4 left-4 z-10 w-96 shadow-2xl bg-card/90 backdrop-blur-sm border-primary/20">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-lg">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Pol%C3%ADcia_Federal_do_Brasil_logo.svg/1200px-Pol%C3%ADcia_Federal_do_Brasil_logo.svg.png" alt="PF Logo" className="h-10" />
-          DCIBER - Combate a Crimes Cibernéticos
+        <CardTitle className="text-lg">
+          Painel de Controle
         </CardTitle>
-        <CardDescription>Dados da Polícia Federal no Combate a Crimes Cibernéticos</CardDescription>
+        <CardDescription>Ajuste as configurações do mapa de calor e explore os dados.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="grid grid-cols-3 gap-4 text-center">
