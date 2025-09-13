@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Registros de Ciber Ataques no Brasil',
-  description: 'Mapa de calor interativo de registros de ciber ataques no Brasil.',
+  title: 'Dados de Operações Contra Cibersegurança no Brasil',
+  description: 'Mapa de calor interativo de dados de operações contra cibersegurança no Brasil.',
 };
 
 export default function RootLayout({
