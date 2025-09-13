@@ -7,7 +7,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Sparkles, Info, LoaderCircle, ShieldAlert } from "lucide-react";
-import { LocationSelector } from "./location-selector";
+import { LocationSelector } from "@/components/location-selector";
 import type { SuggestedLocation } from "@/lib/data";
 
 type ControlsPanelProps = {
@@ -31,7 +31,7 @@ export const ControlsPanel: FC<ControlsPanelProps> = ({
     <Card className="absolute top-4 left-4 z-10 w-96 shadow-2xl bg-card/90 backdrop-blur-sm border-primary/20">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9 Polícia_Federal_do_Brasil_logo.svg/1200px-Polícia_Federal_do_Brasil_logo.svg.png" alt="PF Logo" className="h-10" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Pol%C3%ADcia_Federal_do_Brasil_logo.svg/1200px-Pol%C3%ADcia_Federal_do_Brasil_logo.svg.png" alt="PF Logo" className="h-10" />
           DCIBER - Combate a Crimes Cibernéticos
         </CardTitle>
         <CardDescription>Dados da Polícia Federal no Combate a Crimes Cibernéticos</CardDescription>

@@ -1,5 +1,6 @@
 "use client";
 
+import { Search } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -24,7 +25,10 @@ export function LocationSelector({ onLocationSelect }: LocationSelectorProps) {
   return (
     <Select onValueChange={handleValueChange}>
       <SelectTrigger className="w-full shadow-lg">
-        <SelectValue placeholder="Select a location..." />
+        <div className="flex items-center gap-2">
+          <Search className="h-4 w-4 text-muted-foreground" />
+          <SelectValue placeholder="Ir para localidade..." />
+        </div>
       </SelectTrigger>
       <SelectContent>
         {SUGGESTED_LOCATIONS.map((location) => (
