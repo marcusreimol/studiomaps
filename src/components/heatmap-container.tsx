@@ -34,7 +34,7 @@ export function HeatmapContainer({ apiKey }: HeatmapContainerProps) {
 
 function MapComponent() {
   const [data] = useState<HeatmapPoint[]>(() => getHeatmapData());
-  const [radius, setRadius] = useState(20);
+  const [radius, setRadius] = useState(12);
   const [zoom, setZoom] = useState(mapOptions.zoom);
   const [isLoading, setIsLoading] = useState(false);
   const [aiReasoning, setAiReasoning] = useState<string | null>(null);
@@ -53,15 +53,15 @@ function MapComponent() {
       setRadius(result.optimizedRadius);
       setAiReasoning(result.reasoning);
       toast({
-        title: "✨ AI Optimization Complete",
-        description: "The heatmap radius has been adjusted for optimal viewing.",
+        title: "✨ Otimização por IA Concluída",
+        description: "O raio do mapa de calor foi ajustado para uma visualização otimizada.",
       });
     } catch (error) {
       console.error("AI optimization failed:", error);
       toast({
         variant: "destructive",
-        title: "Optimization Failed",
-        description: "The AI could not determine an optimal radius at this time.",
+        title: "Otimização Falhou",
+        description: "A IA não conseguiu determinar um raio ideal neste momento.",
       });
     } finally {
       setIsLoading(false);
@@ -125,12 +125,22 @@ function HeatmapLayer({ data, radius }: { data: HeatmapPoint[]; radius: number }
     if (!heatmapLayer) return;
     heatmapLayer.set("radius", radius);
     heatmapLayer.set("dissipating", true);
-    heatmapLayer.set("opacity", 0.8);
+    heatmapLayer.set("opacity", 0.7);
     heatmapLayer.set("gradient", [
-      "rgba(245, 245, 220, 0)", // Transparent Soft Sand Beige
-      "rgba(255, 200, 0, 0.7)",  // Lighter orange
-      "hsl(33, 100%, 50%)",     // Sunset Orange
-      "rgba(200, 50, 0, 1)",      // Deeper red-orange
+      "rgba(0, 255, 255, 0)",
+      "rgba(0, 255, 255, 1)",
+      "rgba(0, 191, 255, 1)",
+      "rgba(0, 127, 255, 1)",
+      "rgba(0, 63, 255, 1)",
+      "rgba(0, 0, 255, 1)",
+      "rgba(0, 0, 223, 1)",
+      "rgba(0, 0, 191, 1)",
+      "rgba(0, 0, 159, 1)",
+      "rgba(0, 0, 127, 1)",
+      "rgba(63, 0, 91, 1)",
+      "rgba(127, 0, 63, 1)",
+      "rgba(191, 0, 31, 1)",
+      "rgba(255, 0, 0, 1)",
     ]);
   }, [heatmapLayer, radius]);
 
