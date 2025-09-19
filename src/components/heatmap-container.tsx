@@ -33,13 +33,17 @@ export function HeatmapContainer({ apiKey }: HeatmapContainerProps) {
 }
 
 function MapComponent() {
-  const [data] = useState<HeatmapPoint[]>(() => getHeatmapData());
+  const [data, setData] = useState<HeatmapPoint[]>([]);
   const [radius, setRadius] = useState(12);
   const [zoom, setZoom] = useState(mapOptions.zoom);
   const [isLoading, setIsLoading] = useState(false);
   const [aiReasoning, setAiReasoning] = useState<string | null>(null);
   const { toast } = useToast();
   const map = useMap();
+
+  useEffect(() => {
+    setData(getHeatmapData());
+  }, []);
 
   const handleOptimizeRadius = useCallback(async () => {
     setIsLoading(true);
