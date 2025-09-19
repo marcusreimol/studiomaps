@@ -11,7 +11,7 @@ const BRAZIL_CENTER = { lat: -14.235, lng: -51.9253 };
 
 const mapOptions = {
   center: BRAZIL_CENTER,
-  zoom: 4,
+  zoom: 5,
   minZoom: 4,
   maxZoom: 18,
   mapId: "1f2b96b65a4dc164",
